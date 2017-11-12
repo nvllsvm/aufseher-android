@@ -2,7 +2,7 @@ package com.example.draje.colortest
 
 
 class ColorMode {
-    var mode = "color"
+    var mode: String = ""
 
     var red: Int = 0
     var green: Int = 0

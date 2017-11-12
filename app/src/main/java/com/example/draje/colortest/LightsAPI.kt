@@ -5,6 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.PUT
 
 class LightsAPI(baseUrl: String) {
@@ -19,10 +20,12 @@ class LightsAPI(baseUrl: String) {
     }
 
     interface LightsService {
-        @get:GET("/")
+        @get:Headers("Authorization: thisisnotsecure")
+        @get:GET("/apartment/lights")
         val colorMode: Call<ColorMode>
 
-        @PUT("/")
+        @Headers("Authorization: thisisnotsecure")
+        @PUT("/apartment/lights")
         fun setColorMode(@Body colorMode: ColorMode): Call<ColorMode>
     }
 }
