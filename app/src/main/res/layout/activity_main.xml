@@ -93,104 +93,116 @@
         <LinearLayout
             android:id="@+id/value_red"
             android:orientation="horizontal"
-            android:padding="@dimen/seekbar_padding"
+            android:paddingLeft="@dimen/seekbar_padding"
+            android:paddingRight="@dimen/seekbar_padding"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/seekbar_height">
             <TextView
               android:textSize="@dimen/default_text_size"
-              android:layout_height="wrap_content"
+              android:layout_height="match_parent"
               android:layout_width="@dimen/seekbar_width_text"
+              android:gravity="center_vertical"
               android:text="Red"/>
             <SeekBar
                 android:id="@+id/seekbar_red"
                 android:max="255"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/value_green"
             android:orientation="horizontal"
-            android:padding="@dimen/seekbar_padding"
+            android:paddingLeft="@dimen/seekbar_padding"
+            android:paddingRight="@dimen/seekbar_padding"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/seekbar_height">
             <TextView
               android:textSize="@dimen/default_text_size"
               android:layout_width="@dimen/seekbar_width_text"
-              android:layout_height="wrap_content"
+              android:layout_height="match_parent"
+              android:gravity="center_vertical"
               android:text="Green"/>
             <SeekBar
                 android:id="@+id/seekbar_green"
                 android:max="255"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/value_blue"
             android:orientation="horizontal"
-            android:padding="@dimen/seekbar_padding"
+            android:paddingLeft="@dimen/seekbar_padding"
+            android:paddingRight="@dimen/seekbar_padding"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/seekbar_height">
             <TextView
               android:textSize="@dimen/default_text_size"
               android:layout_width="@dimen/seekbar_width_text"
-              android:layout_height="wrap_content"
+              android:layout_height="match_parent"
+              android:gravity="center_vertical"
               android:text="Blue"/>
             <SeekBar
                 android:id="@+id/seekbar_blue"
                 android:max="255"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/value_white"
             android:orientation="horizontal"
-            android:padding="@dimen/seekbar_padding"
+            android:paddingLeft="@dimen/seekbar_padding"
+            android:paddingRight="@dimen/seekbar_padding"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/seekbar_height">
             <TextView
               android:textSize="@dimen/default_text_size"
               android:layout_width="@dimen/seekbar_width_text"
-              android:layout_height="wrap_content"
+              android:layout_height="match_parent"
+              android:gravity="center_vertical"
               android:text="White"/>
             <SeekBar
                 android:id="@+id/seekbar_white"
                 android:max="255"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/value_brightness"
             android:orientation="horizontal"
-            android:padding="@dimen/seekbar_padding"
+            android:paddingLeft="@dimen/seekbar_padding"
+            android:paddingRight="@dimen/seekbar_padding"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/seekbar_height">
             <TextView
               android:textSize="@dimen/default_text_size"
               android:layout_width="@dimen/seekbar_width_text"
-              android:layout_height="wrap_content"
+              android:layout_height="match_parent"
+              android:gravity="center_vertical"
               android:text="Brightness"/>
             <SeekBar
                 android:id="@+id/seekbar_brightness"
                 android:max="255"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/value_interval"
             android:orientation="horizontal"
-            android:padding="@dimen/seekbar_padding"
+            android:paddingLeft="@dimen/seekbar_padding"
+            android:paddingRight="@dimen/seekbar_padding"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/seekbar_height">
             <TextView
               android:textSize="@dimen/default_text_size"
               android:layout_width="@dimen/seekbar_width_text"
-              android:layout_height="wrap_content"
+              android:layout_height="match_parent"
+              android:gravity="center_vertical"
               android:text="Interval"/>
             <SeekBar
                 android:max="255"
                 android:id="@+id/seekbar_interval"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
         </LinearLayout>
     </LinearLayout>
 
