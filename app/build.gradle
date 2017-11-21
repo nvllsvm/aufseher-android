@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.example.draje.colortest"
+        applicationId "net.nullsum.aufseher"
         minSdkVersion 25
         targetSdkVersion 26
         versionCode 1

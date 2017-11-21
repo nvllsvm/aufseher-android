@@ -1,4 +1,4 @@
-package com.example.draje.colortest
+package net.nullsum.aufseher
 
 
 class ColorMode {

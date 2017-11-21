@@ -1,4 +1,4 @@
-package com.example.draje.colortest
+package net.nullsum.aufseher
 
 import android.graphics.Color
 import android.support.annotation.ColorInt
