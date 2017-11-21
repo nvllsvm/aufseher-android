@@ -20,6 +20,8 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
     lateinit var service: LightsAPI.LightsService
 
+    val tag = "aufseher"
+
     val colorMode = ColorMode()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         setColors(colorMode)
     }
 
-    fun onRadioButtonClicked(view: View) {
+    fun onRadioButtonClicked() {
         val radioID = (findViewById<View>(R.id.radiogroup) as RadioGroup).getCheckedRadioButtonId()
         val radioText = (findViewById<View>(radioID) as RadioButton).getText()
 
@@ -99,16 +101,16 @@ class MainActivity : AppCompatActivity() {
         val call2 = service.setColorMode(colorMode)
         call2.enqueue(object : Callback<ColorMode> {
             override fun onResponse(call: Call<ColorMode>, response: Response<ColorMode>) {
-                val mode = response.body()
+                Log.i(tag, "success")
             }
 
             override fun onFailure(call: Call<ColorMode>, t: Throwable) {
-                Log.e("sad", "sad", t)
+                Log.e(tag, "sad", t)
             }
         })
     }
 
-    fun onCheckboxClicked(view: View) {
+    fun onCheckboxClicked() {
     }
 
 }
