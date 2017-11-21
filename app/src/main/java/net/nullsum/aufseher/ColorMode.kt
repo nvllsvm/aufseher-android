@@ -9,4 +9,5 @@ class ColorMode {
     var blue: Int = 0
     var white: Int = 0
     var brightness: Int = 0
+    var interval: Int = 0
 }

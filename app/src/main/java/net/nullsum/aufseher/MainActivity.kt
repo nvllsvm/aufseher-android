@@ -86,6 +86,7 @@ class MainActivity : AppCompatActivity() {
         colorMode.blue = (findViewById<View>(R.id.seekbar_blue) as SeekBar).getProgress()
         colorMode.white = (findViewById<View>(R.id.seekbar_white) as SeekBar).getProgress()
         colorMode.brightness = (findViewById<View>(R.id.seekbar_brightness) as SeekBar).getProgress()
+        colorMode.interval = (findViewById<View>(R.id.seekbar_interval) as SeekBar).getProgress()
 
         setColors(colorMode)
     }
