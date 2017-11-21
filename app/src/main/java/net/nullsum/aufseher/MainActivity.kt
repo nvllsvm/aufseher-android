@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         setColors(colorMode)
     }
 
-    fun onRadioButtonClicked() {
+    fun onRadioButtonClicked(view: View) {
         val radioID = (findViewById<View>(R.id.radiogroup) as RadioGroup).getCheckedRadioButtonId()
         val radioText = (findViewById<View>(radioID) as RadioButton).getText()
 
