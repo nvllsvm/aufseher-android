@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     val tag = "aufseher"
 
-    val colorMode = ColorMode()
+    private val colorMode = ColorMode()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,53 +40,64 @@ class MainActivity : AppCompatActivity() {
         (findViewById<View>(R.id.radio_color) as RadioButton).setChecked(true)
         setMode("color")
 
-        val seekbar_brightness = findViewById<View>(R.id.seekbar_brightness) as SeekBar
-        seekbar_brightness.setProgress(seekbar_brightness.getMax())
+        val seekbarBrightness = findViewById<View>(R.id.seekbar_brightness) as SeekBar
+        seekbarBrightness.progress = seekbarBrightness.getMax()
 
-        val seekbar_blue = findViewById<View>(R.id.seekbar_blue) as SeekBar
-        seekbar_blue.setProgress(seekbar_blue.getMax())
+        val seekbarBlue = findViewById<View>(R.id.seekbar_blue) as SeekBar
+        seekbarBlue.progress = seekbarBlue.getMax()
     }
 
     fun setMode(mode: String) {
         colorMode.mode = mode
 
-        (findViewById<View>(R.id.values) as View).setVisibility(View.GONE)
-        (findViewById<View>(R.id.value_red) as View).setVisibility(View.GONE)
-        (findViewById<View>(R.id.value_green) as View).setVisibility(View.GONE)
-        (findViewById<View>(R.id.value_blue) as View).setVisibility(View.GONE)
-        (findViewById<View>(R.id.value_white) as View).setVisibility(View.GONE)
-        (findViewById<View>(R.id.value_brightness) as View).setVisibility(View.GONE)
-        (findViewById<View>(R.id.value_interval) as View).setVisibility(View.GONE)
+        var allAttributes: List<Int> = listOf(
+                R.id.values,
+                R.id.value_red,
+                R.id.value_green,
+                R.id.value_blue,
+                R.id.value_white,
+                R.id.value_brightness,
+                R.id.value_interval)
 
-        if (mode == "color") {
-            (findViewById<View>(R.id.values) as View).setVisibility(View.VISIBLE)
-            (findViewById<View>(R.id.value_red) as View).setVisibility(View.VISIBLE)
-            (findViewById<View>(R.id.value_green) as View).setVisibility(View.VISIBLE)
-            (findViewById<View>(R.id.value_blue) as View).setVisibility(View.VISIBLE)
-            (findViewById<View>(R.id.value_white) as View).setVisibility(View.VISIBLE)
-            (findViewById<View>(R.id.value_brightness) as View).setVisibility(View.VISIBLE)
-        } else if (mode == "rainbow") {
-            (findViewById<View>(R.id.values) as View).setVisibility(View.VISIBLE)
-            (findViewById<View>(R.id.value_brightness) as View).setVisibility(View.VISIBLE)
-            (findViewById<View>(R.id.value_interval) as View).setVisibility(View.VISIBLE)
-        } else if (mode == "flash") {
-            (findViewById<View>(R.id.values) as View).setVisibility(View.VISIBLE)
-            (findViewById<View>(R.id.value_red) as View).setVisibility(View.VISIBLE)
-            (findViewById<View>(R.id.value_green) as View).setVisibility(View.VISIBLE)
-            (findViewById<View>(R.id.value_blue) as View).setVisibility(View.VISIBLE)
-            (findViewById<View>(R.id.value_white) as View).setVisibility(View.VISIBLE)
-            (findViewById<View>(R.id.value_brightness) as View).setVisibility(View.VISIBLE)
-            (findViewById<View>(R.id.value_interval) as View).setVisibility(View.VISIBLE)
-        } else if (mode == "off") {
+        for (attribute in allAttributes) {
+            (findViewById<View>(attribute) as View).visibility = View.GONE
+        }
+
+        var visibleAttributes: List<Int> = listOf()
+
+        when (colorMode.mode) {
+            "color" -> visibleAttributes = mutableListOf(
+                    R.id.values,
+                    R.id.value_red,
+                    R.id.value_green,
+                    R.id.value_blue,
+                    R.id.value_white,
+                    R.id.value_brightness)
+            "rainbow" -> visibleAttributes = mutableListOf(
+                    R.id.values,
+                    R.id.value_brightness,
+                    R.id.value_interval)
+            "flash" -> visibleAttributes = mutableListOf(
+                    R.id.values,
+                    R.id.value_red,
+                    R.id.value_green,
+                    R.id.value_blue,
+                    R.id.value_white,
+                    R.id.value_brightness,
+                    R.id.value_interval)
+        }
+
+        for (attribute in visibleAttributes) {
+            (findViewById<View>(attribute) as View).visibility = View.VISIBLE
         }
     }
     fun setColor() {
-        colorMode.red = (findViewById<View>(R.id.seekbar_red) as SeekBar).getProgress()
-        colorMode.green = (findViewById<View>(R.id.seekbar_green) as SeekBar).getProgress()
-        colorMode.blue = (findViewById<View>(R.id.seekbar_blue) as SeekBar).getProgress()
-        colorMode.white = (findViewById<View>(R.id.seekbar_white) as SeekBar).getProgress()
-        colorMode.brightness = (findViewById<View>(R.id.seekbar_brightness) as SeekBar).getProgress()
-        colorMode.interval = (findViewById<View>(R.id.seekbar_interval) as SeekBar).getProgress()
+        colorMode.red = (findViewById<View>(R.id.seekbar_red) as SeekBar).progress
+        colorMode.green = (findViewById<View>(R.id.seekbar_green) as SeekBar).progress
+        colorMode.blue = (findViewById<View>(R.id.seekbar_blue) as SeekBar).progress
+        colorMode.white = (findViewById<View>(R.id.seekbar_white) as SeekBar).progress
+        colorMode.brightness = (findViewById<View>(R.id.seekbar_brightness) as SeekBar).progress
+        colorMode.interval = (findViewById<View>(R.id.seekbar_interval) as SeekBar).progress
 
         setColors(colorMode)
     }
