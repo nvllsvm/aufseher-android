@@ -1,5 +1,25 @@
 <resources>
     <string name="app_name">Aufseher</string>
 
+    <string name="modes_title">Modes</string>
+    <string name="strips_title">Strips</string>
+    <string name="values_title">Values</string>
+
     <string name="button_request">💡</string>
+
+    <string name="bedroom_name">Bedroom</string>
+    <string name="windowsill_name">Windowsill</string>
+    <string name="monitor_name">Monitor</string>
+
+    <string name="red_value">Red</string>
+    <string name="blue_value">Blue</string>
+    <string name="green_value">Green</string>
+    <string name="white_value">White</string>
+    <string name="interval_value">Interval</string>
+    <string name="brightness_value">Brightness</string>
+
+    <string name="off_mode">Off</string>
+    <string name="color_mode">Color</string>
+    <string name="rainbow_mode">Rainbow</string>
+    <string name="flash_mode">Flash</string>
 </resources>
