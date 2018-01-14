@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity() {
                 if (status_code == 204) {
                     Log.d(tag, "setColors success")
                 } else {
-                    showSnackbar("Error 😥 - HTTP " + status_code)
+                    showSnackbar("😥 Error - HTTP " + status_code)
                     Log.e(tag, "setColors HTTP " + status_code)
                 }
             }
@@ -145,7 +145,7 @@ class MainActivity : AppCompatActivity() {
             override fun onFailure(call: Call<ColorMode>, t: Throwable) {
                 removeRequestBar()
                 Log.e(tag, "setColors exception", t)
-                showSnackbar("Error 😥")
+                showSnackbar("😥 Error")
             }
         })
     }
