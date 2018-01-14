@@ -7,6 +7,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.SeekBar
 import android.support.v7.app.AppCompatActivity
+import android.support.design.widget.Snackbar
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -109,15 +110,26 @@ class MainActivity : AppCompatActivity() {
         setMode((radioText as String).toLowerCase())
     }
 
+    fun showSnackbar(message: String) {
+        Snackbar.make(findViewById<View>(android.R.id.content), message, Snackbar.LENGTH_LONG).show()
+    }
+
     fun setColors(colorMode: ColorMode) {
         val call2 = service.setColorMode(colorMode)
         call2.enqueue(object : Callback<ColorMode> {
             override fun onResponse(call: Call<ColorMode>, response: Response<ColorMode>) {
-                Log.i(tag, "success")
+                val status_code = response.code()
+                if (status_code == 204) {
+                    Log.d(tag, "setColors success")
+                } else {
+                    showSnackbar("Error 😥 - HTTP " + status_code)
+                    Log.e(tag, "setColors HTTP " + status_code)
+                }
             }
 
             override fun onFailure(call: Call<ColorMode>, t: Throwable) {
-                Log.e(tag, "sad", t)
+                Log.e(tag, "setColors exception", t)
+                showSnackbar("Error 😥")
             }
         })
     }
