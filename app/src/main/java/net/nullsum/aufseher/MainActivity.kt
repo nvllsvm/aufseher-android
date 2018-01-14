@@ -6,6 +6,7 @@ import android.widget.CheckBox
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.SeekBar
+import android.widget.ProgressBar
 import android.support.v7.app.AppCompatActivity
 import android.support.design.widget.Snackbar
 import android.os.Bundle
@@ -20,6 +21,7 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     lateinit var service: LightsAPI.LightsService
+    lateinit var request_bar: View
 
     val tag = "aufseher"
 
@@ -46,6 +48,16 @@ class MainActivity : AppCompatActivity() {
 
         val seekbarBlue = findViewById<View>(R.id.seekbar_blue) as SeekBar
         seekbarBlue.progress = seekbarBlue.getMax()
+
+        request_bar = findViewById<View>(R.id.request_bar) as ProgressBar
+    }
+
+    fun showRequestBar() {
+        request_bar.setVisibility(View.VISIBLE)
+    }
+
+    fun removeRequestBar() {
+        request_bar.setVisibility(View.GONE)
     }
 
     fun setMode(mode: String) {
@@ -115,9 +127,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setColors(colorMode: ColorMode) {
+        showRequestBar()
+
         val call2 = service.setColorMode(colorMode)
         call2.enqueue(object : Callback<ColorMode> {
             override fun onResponse(call: Call<ColorMode>, response: Response<ColorMode>) {
+                request_bar.setVisibility(View.GONE)
                 val status_code = response.code()
                 if (status_code == 204) {
                     Log.d(tag, "setColors success")
@@ -128,6 +143,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ColorMode>, t: Throwable) {
+                removeRequestBar()
                 Log.e(tag, "setColors exception", t)
                 showSnackbar("Error 😥")
             }
