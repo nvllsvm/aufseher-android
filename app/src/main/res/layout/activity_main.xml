@@ -266,7 +266,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="@dimen/button_request_text_size"
-            android:background="?android:selectableItemBackground"
+            android:background="@null"
             android:text="@string/button_request"/>
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>
