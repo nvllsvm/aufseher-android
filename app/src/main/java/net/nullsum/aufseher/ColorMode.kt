@@ -10,4 +10,6 @@ class ColorMode {
     var white: Int = 0
     var brightness: Int = 0
     var interval: Int = 0
+
+    var strips: MutableList<String> = mutableListOf("monitor", "bedroom", "windowsill")
 }

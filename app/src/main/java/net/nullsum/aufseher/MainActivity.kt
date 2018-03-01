@@ -112,6 +112,17 @@ class MainActivity : AppCompatActivity() {
         colorMode.brightness = (findViewById<View>(R.id.seekbar_brightness) as SeekBar).progress
         colorMode.interval = (findViewById<View>(R.id.seekbar_interval) as SeekBar).progress
 
+        colorMode.strips.clear()
+        if ((findViewById<View>(R.id.checkbox_bedroom) as CheckBox).isChecked) {
+            colorMode.strips.add("bedroom")
+        }
+        if ((findViewById<View>(R.id.checkbox_monitor) as CheckBox).isChecked) {
+            colorMode.strips.add("monitor")
+        }
+        if ((findViewById<View>(R.id.checkbox_windowsill) as CheckBox).isChecked) {
+            colorMode.strips.add("windowsill")
+        }
+
         setColors(colorMode)
     }
 
