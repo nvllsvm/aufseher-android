@@ -1,27 +1,19 @@
 package net.nullsum.aufseher
 
-import android.graphics.Color
-import android.support.annotation.ColorInt
-import android.widget.CheckBox
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.SeekBar
-import android.widget.ProgressBar
-import android.support.v7.app.AppCompatActivity
-import android.support.design.widget.Snackbar
 import android.os.Bundle
+import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
-import android.widget.Button
-
+import android.widget.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var service: LightsAPI.LightsService
-    lateinit var request_bar: View
+    private lateinit var service: LightsAPI.LightsService
+    lateinit var requestBar: View
 
     val tag = "aufseher"
 
@@ -36,34 +28,34 @@ class MainActivity : AppCompatActivity() {
 
         (findViewById<View>(R.id.button_request) as Button).setOnClickListener { setColor() }
 
-        (findViewById<View>(R.id.checkbox_monitor) as CheckBox).setChecked(true)
-        (findViewById<View>(R.id.checkbox_bedroom) as CheckBox).setChecked(true)
-        (findViewById<View>(R.id.checkbox_windowsill) as CheckBox).setChecked(true)
+        (findViewById<View>(R.id.checkbox_monitor) as CheckBox).isChecked = true
+        (findViewById<View>(R.id.checkbox_bedroom) as CheckBox).isChecked = true
+        (findViewById<View>(R.id.checkbox_windowsill) as CheckBox).isChecked = true
 
-        (findViewById<View>(R.id.radio_color) as RadioButton).setChecked(true)
+        (findViewById<View>(R.id.radio_color) as RadioButton).isChecked = true
         setMode("color")
 
         val seekbarBrightness = findViewById<View>(R.id.seekbar_brightness) as SeekBar
-        seekbarBrightness.progress = seekbarBrightness.getMax()
+        seekbarBrightness.progress = seekbarBrightness.max
 
         val seekbarBlue = findViewById<View>(R.id.seekbar_blue) as SeekBar
-        seekbarBlue.progress = seekbarBlue.getMax()
+        seekbarBlue.progress = seekbarBlue.max
 
-        request_bar = findViewById<View>(R.id.request_bar) as ProgressBar
+        requestBar = findViewById<View>(R.id.request_bar) as ProgressBar
     }
 
-    fun showRequestBar() {
-        request_bar.setVisibility(View.VISIBLE)
+    private fun showRequestBar() {
+        requestBar.visibility = View.VISIBLE
     }
 
     fun removeRequestBar() {
-        request_bar.setVisibility(View.GONE)
+        requestBar.visibility = View.GONE
     }
 
-    fun setMode(mode: String) {
+    private fun setMode(mode: String) {
         colorMode.mode = mode
 
-        var allAttributes: List<Int> = listOf(
+        val allAttributes: List<Int> = listOf(
                 R.id.values,
                 R.id.value_red,
                 R.id.value_green,
@@ -104,7 +96,8 @@ class MainActivity : AppCompatActivity() {
             (findViewById<View>(attribute) as View).visibility = View.VISIBLE
         }
     }
-    fun setColor() {
+
+    private fun setColor() {
         colorMode.red = (findViewById<View>(R.id.seekbar_red) as SeekBar).progress
         colorMode.green = (findViewById<View>(R.id.seekbar_green) as SeekBar).progress
         colorMode.blue = (findViewById<View>(R.id.seekbar_blue) as SeekBar).progress
@@ -127,8 +120,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onRadioButtonClicked(view: View) {
-        val radioID = (findViewById<View>(R.id.radiogroup) as RadioGroup).getCheckedRadioButtonId()
-        val radioText = (findViewById<View>(radioID) as RadioButton).getText()
+        val radioID = (findViewById<View>(R.id.radiogroup) as RadioGroup).checkedRadioButtonId
+        val radioText = (findViewById<View>(radioID) as RadioButton).text
 
         setMode((radioText as String).toLowerCase())
     }
@@ -137,19 +130,19 @@ class MainActivity : AppCompatActivity() {
         Snackbar.make(findViewById<View>(android.R.id.content), message, Snackbar.LENGTH_LONG).show()
     }
 
-    fun setColors(colorMode: ColorMode) {
+    private fun setColors(colorMode: ColorMode) {
         showRequestBar()
 
         val call2 = service.setColorMode(colorMode)
         call2.enqueue(object : Callback<ColorMode> {
             override fun onResponse(call: Call<ColorMode>, response: Response<ColorMode>) {
-                request_bar.setVisibility(View.GONE)
-                val status_code = response.code()
-                if (status_code == 204) {
+                requestBar.visibility = View.GONE
+                val statusCode = response.code()
+                if (statusCode == 204) {
                     Log.d(tag, "setColors success")
                 } else {
-                    showSnackbar("😥 Error - HTTP " + status_code)
-                    Log.e(tag, "setColors HTTP " + status_code)
+                    showSnackbar("😥 Error - HTTP $statusCode")
+                    Log.e(tag, "setColors HTTP $statusCode")
                 }
             }
 
@@ -159,9 +152,6 @@ class MainActivity : AppCompatActivity() {
                 showSnackbar("😥 Error")
             }
         })
-    }
-
-    fun onCheckboxClicked() {
     }
 
 }

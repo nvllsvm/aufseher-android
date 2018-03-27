@@ -5,243 +5,274 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.draje.colortest.MainActivity">
+    tools:context="net.nullsum.aufseher.MainActivity">
 
 
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_container"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/button_container">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="@dimen/layout_padding">
 
             <LinearLayout
                 android:id="@+id/strip_layout"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
                 <TextView
-                  android:textStyle="bold"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_centerHorizontal="true"
-                  android:layout_centerVertical="true"
-                  android:textSize="@dimen/section_title_text_size"
-                  android:paddingBottom="@dimen/section_title_padding_bottom"
-                  android:text="@string/strips_title"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/section_title_padding_bottom"
+                    android:text="@string/strips_title"
+                    android:textSize="@dimen/section_title_text_size"
+                    android:textStyle="bold" />
+
                 <LinearLayout
-                    android:gravity="center"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
-                    <CheckBox android:id="@+id/checkbox_bedroom"
-                        android:textSize="@dimen/default_text_size"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:id="@+id/checkbox_bedroom"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="@string/bedroom_name"/>
-                    <CheckBox android:id="@+id/checkbox_monitor"
-                        android:textSize="@dimen/default_text_size"
+                        android:layout_weight="1"
+                        android:text="@string/bedroom_name"
+                        android:textSize="@dimen/default_text_size" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_monitor"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="@string/monitor_name"/>
-                    <CheckBox android:id="@+id/checkbox_windowsill"
-                        android:textSize="@dimen/default_text_size"
+                        android:layout_weight="1"
+                        android:text="@string/monitor_name"
+                        android:textSize="@dimen/default_text_size" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_windowsill"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="@string/windowsill_name"/>
+                        android:layout_weight="1"
+                        android:text="@string/windowsill_name"
+                        android:textSize="@dimen/default_text_size" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/mode_layout"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
                 <TextView
-                  android:textStyle="bold"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_centerHorizontal="true"
-                  android:layout_centerVertical="true"
-                  android:textSize="@dimen/section_title_text_size"
-                  android:paddingTop="@dimen/section_title_padding_top"
-                  android:paddingBottom="@dimen/section_title_padding_bottom"
-                  android:text="@string/modes_title"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/section_title_padding_bottom"
+                    android:paddingTop="@dimen/section_title_padding_top"
+                    android:text="@string/modes_title"
+                    android:textSize="@dimen/section_title_text_size"
+                    android:textStyle="bold" />
+
                 <RadioGroup
                     android:id="@+id/radiogroup"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <RadioButton android:id="@+id/radio_off"
-                        android:textSize="@dimen/default_text_size"
+
+                    <RadioButton
+                        android:id="@+id/radio_off"
                         android:layout_width="match_parent"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:onClick="onRadioButtonClicked"
-                        android:text="@string/off_mode"/>
-                    <RadioButton android:id="@+id/radio_color"
-                        android:textSize="@dimen/default_text_size"
+                        android:text="@string/off_mode"
+                        android:textSize="@dimen/default_text_size" />
+
+                    <RadioButton
+                        android:id="@+id/radio_color"
                         android:layout_width="match_parent"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:onClick="onRadioButtonClicked"
-                        android:text="@string/color_mode"/>
-                    <RadioButton android:id="@+id/radio_rainbow"
-                        android:textSize="@dimen/default_text_size"
+                        android:text="@string/color_mode"
+                        android:textSize="@dimen/default_text_size" />
+
+                    <RadioButton
+                        android:id="@+id/radio_rainbow"
                         android:layout_width="match_parent"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:onClick="onRadioButtonClicked"
-                        android:text="@string/rainbow_mode"/>
-                    <RadioButton android:id="@+id/radio_flash"
-                        android:textSize="@dimen/default_text_size"
+                        android:text="@string/rainbow_mode"
+                        android:textSize="@dimen/default_text_size" />
+
+                    <RadioButton
+                        android:id="@+id/radio_flash"
                         android:layout_width="match_parent"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:onClick="onRadioButtonClicked"
-                        android:text="@string/flash_mode"/>
+                        android:text="@string/flash_mode"
+                        android:textSize="@dimen/default_text_size" />
                 </RadioGroup>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/value_layout"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
                 <TextView
-                  android:id="@+id/values"
-                  android:textStyle="bold"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_centerHorizontal="true"
-                  android:layout_centerVertical="true"
-                  android:textSize="@dimen/section_title_text_size"
-                  android:paddingTop="@dimen/section_title_padding_top"
-                  android:paddingBottom="@dimen/section_title_padding_bottom"
-                  android:text="@string/values_title"/>
+                    android:id="@+id/values"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/section_title_padding_bottom"
+                    android:paddingTop="@dimen/section_title_padding_top"
+                    android:text="@string/values_title"
+                    android:textSize="@dimen/section_title_text_size"
+                    android:textStyle="bold" />
+
                 <LinearLayout
                     android:id="@+id/value_red"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/seekbar_height"
                     android:orientation="horizontal"
                     android:paddingLeft="@dimen/seekbar_padding"
-                    android:paddingRight="@dimen/seekbar_padding"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/seekbar_height">
+                    android:paddingRight="@dimen/seekbar_padding">
+
                     <TextView
-                      android:textSize="@dimen/default_text_size"
-                      android:layout_height="match_parent"
-                      android:layout_width="@dimen/seekbar_width_text"
-                      android:gravity="center_vertical"
-                      android:text="@string/red_value"/>
+                        android:layout_width="@dimen/seekbar_width_text"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/red_value"
+                        android:textSize="@dimen/default_text_size" />
+
                     <SeekBar
                         android:id="@+id/seekbar_red"
-                        android:max="255"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:max="255" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/value_green"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/seekbar_height"
                     android:orientation="horizontal"
                     android:paddingLeft="@dimen/seekbar_padding"
-                    android:paddingRight="@dimen/seekbar_padding"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/seekbar_height">
+                    android:paddingRight="@dimen/seekbar_padding">
+
                     <TextView
-                      android:textSize="@dimen/default_text_size"
-                      android:layout_width="@dimen/seekbar_width_text"
-                      android:layout_height="match_parent"
-                      android:gravity="center_vertical"
-                      android:text="@string/green_value"/>
+                        android:layout_width="@dimen/seekbar_width_text"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/green_value"
+                        android:textSize="@dimen/default_text_size" />
+
                     <SeekBar
                         android:id="@+id/seekbar_green"
-                        android:max="255"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:max="255" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/value_blue"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/seekbar_height"
                     android:orientation="horizontal"
                     android:paddingLeft="@dimen/seekbar_padding"
-                    android:paddingRight="@dimen/seekbar_padding"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/seekbar_height">
+                    android:paddingRight="@dimen/seekbar_padding">
+
                     <TextView
-                      android:textSize="@dimen/default_text_size"
-                      android:layout_width="@dimen/seekbar_width_text"
-                      android:layout_height="match_parent"
-                      android:gravity="center_vertical"
-                      android:text="@string/blue_value"/>
+                        android:layout_width="@dimen/seekbar_width_text"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/blue_value"
+                        android:textSize="@dimen/default_text_size" />
+
                     <SeekBar
                         android:id="@+id/seekbar_blue"
-                        android:max="255"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:max="255" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/value_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/seekbar_height"
                     android:orientation="horizontal"
                     android:paddingLeft="@dimen/seekbar_padding"
-                    android:paddingRight="@dimen/seekbar_padding"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/seekbar_height">
+                    android:paddingRight="@dimen/seekbar_padding">
+
                     <TextView
-                      android:textSize="@dimen/default_text_size"
-                      android:layout_width="@dimen/seekbar_width_text"
-                      android:layout_height="match_parent"
-                      android:gravity="center_vertical"
-                      android:text="@string/white_value"/>
+                        android:layout_width="@dimen/seekbar_width_text"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/white_value"
+                        android:textSize="@dimen/default_text_size" />
+
                     <SeekBar
                         android:id="@+id/seekbar_white"
-                        android:max="255"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:max="255" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/value_brightness"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/seekbar_height"
                     android:orientation="horizontal"
                     android:paddingLeft="@dimen/seekbar_padding"
-                    android:paddingRight="@dimen/seekbar_padding"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/seekbar_height">
+                    android:paddingRight="@dimen/seekbar_padding">
+
                     <TextView
-                      android:textSize="@dimen/default_text_size"
-                      android:layout_width="@dimen/seekbar_width_text"
-                      android:layout_height="match_parent"
-                      android:gravity="center_vertical"
-                      android:text="@string/brightness_value"/>
+                        android:layout_width="@dimen/seekbar_width_text"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/brightness_value"
+                        android:textSize="@dimen/default_text_size" />
+
                     <SeekBar
                         android:id="@+id/seekbar_brightness"
-                        android:max="255"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:max="255" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/value_interval"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/seekbar_height"
                     android:orientation="horizontal"
                     android:paddingLeft="@dimen/seekbar_padding"
-                    android:paddingRight="@dimen/seekbar_padding"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/seekbar_height">
+                    android:paddingRight="@dimen/seekbar_padding">
+
                     <TextView
-                      android:textSize="@dimen/default_text_size"
-                      android:layout_width="@dimen/seekbar_width_text"
-                      android:layout_height="match_parent"
-                      android:gravity="center_vertical"
-                      android:text="@string/interval_value"/>
+                        android:layout_width="@dimen/seekbar_width_text"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/interval_value"
+                        android:textSize="@dimen/default_text_size" />
+
                     <SeekBar
-                        android:max="255"
                         android:id="@+id/seekbar_interval"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:max="255" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -251,22 +282,24 @@
         android:id="@+id/button_container"
         android:layout_width="0dp"
         android:layout_height="@dimen/button_container_height"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scroll_view">
+
         <ProgressBar
             android:id="@+id/request_bar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
-            android:background="#00000000"/>
+            android:background="#00000000"
+            android:visibility="gone" />
+
         <Button
             android:id="@+id/button_request"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="@dimen/button_request_text_size"
             android:background="@null"
-            android:text="@string/button_request"/>
+            android:text="@string/button_request"
+            android:textSize="@dimen/button_request_text_size" />
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>
