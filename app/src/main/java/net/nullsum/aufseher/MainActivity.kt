@@ -36,9 +36,6 @@ class MainActivity : AppCompatActivity() {
         (findViewById<View>(R.id.checkbox_bedroom) as CheckBox).isChecked = true
         (findViewById<View>(R.id.checkbox_windowsill) as CheckBox).isChecked = true
 
-        (findViewById<View>(R.id.radio_color) as RadioButton).isChecked = true
-        setMode("color")
-
         val seekbarBrightness = findViewById<View>(R.id.seekbar_brightness) as SeekBar
         seekbarBrightness.progress = seekbarBrightness.max
 
