@@ -1,11 +1,11 @@
 package net.nullsum.aufseher.api
 
-import net.nullsum.aufseher.ColorMode
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.PUT
 
 class LightsAPI(baseUrl: String) {
@@ -18,6 +18,9 @@ class LightsAPI(baseUrl: String) {
     interface LightsService {
 
         @PUT("/apartment/lights")
-        fun setColorMode(@Body colorMode: ColorMode): Call<ColorMode>
+        fun setColorMode(@Body colorMode: POSTColorMode): Call<POSTColorMode>
+
+        @GET("/apartment/lights")
+        fun getColorMode(): Call<GETColorMode>
     }
 }

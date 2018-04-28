@@ -7,7 +7,9 @@ import android.support.v7.widget.AppCompatRadioButton
 import android.util.Log
 import android.view.View
 import android.widget.*
+import net.nullsum.aufseher.api.GETColorMode
 import net.nullsum.aufseher.api.LightsAPI
+import net.nullsum.aufseher.api.POSTColorMode
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     val tag = "aufseher"
 
-    private val colorMode = ColorMode()
+    private val colorMode = POSTColorMode()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +46,53 @@ class MainActivity : AppCompatActivity() {
         seekbarBlue.progress = seekbarBlue.max
 
         requestBar = findViewById<View>(R.id.request_bar) as ProgressBar
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setControls()
+    }
+
+    private fun setControls() {
+        val call1 = service.getColorMode()
+        call1.enqueue(object : Callback<GETColorMode> {
+            override fun onResponse(call: Call<GETColorMode>, response: Response<GETColorMode>) {
+                val statusCode = response.code()
+                val body = response.body()
+                if (body != null) {
+                    for ((k, v) in body.strips) {
+                        if (k == "monitor") {
+                            (findViewById<View>(R.id.seekbar_red) as SeekBar).progress = v.red
+                            (findViewById<View>(R.id.seekbar_blue) as SeekBar).progress = v.blue
+                            (findViewById<View>(R.id.seekbar_green) as SeekBar).progress = v.green
+                            (findViewById<View>(R.id.seekbar_white) as SeekBar).progress = v.white
+                            (findViewById<View>(R.id.seekbar_brightness) as SeekBar).progress = v.brightness
+                            (findViewById<View>(R.id.seekbar_interval) as SeekBar).progress = v.interval
+                            setMode(v.mode)
+                            when(v.mode) {
+                                "color" -> (findViewById<View>(R.id.radio_color) as RadioButton).isChecked = true
+                                "off" -> (findViewById<View>(R.id.radio_off) as RadioButton).isChecked = true
+                                "flash" -> (findViewById<View>(R.id.radio_flash) as RadioButton).isChecked = true
+                                "rainbow" -> (findViewById<View>(R.id.radio_rainbow) as RadioButton).isChecked = true
+                            }
+                        }
+                    }
+                }
+                if (statusCode == 200) {
+                    Log.d(tag, "getColors success")
+                } else {
+                    showSnackbar("😥 Error - HTTP $statusCode")
+                    Log.e(tag, "getColors HTTP $statusCode")
+                }
+            }
+
+            override fun onFailure(call: Call<GETColorMode>, t: Throwable) {
+                removeRequestBar()
+                Log.e(tag, "getColors exception", t)
+                showSnackbar("😥 Error")
+            }
+        })
+
     }
 
     private fun showRequestBar() {
@@ -130,12 +179,12 @@ class MainActivity : AppCompatActivity() {
         Snackbar.make(findViewById<View>(android.R.id.content), message, Snackbar.LENGTH_LONG).show()
     }
 
-    private fun setColors(colorMode: ColorMode) {
+    private fun setColors(colorMode: POSTColorMode) {
         showRequestBar()
 
         val call2 = service.setColorMode(colorMode)
-        call2.enqueue(object : Callback<ColorMode> {
-            override fun onResponse(call: Call<ColorMode>, response: Response<ColorMode>) {
+        call2.enqueue(object : Callback<POSTColorMode> {
+            override fun onResponse(call: Call<POSTColorMode>, response: Response<POSTColorMode>) {
                 requestBar.visibility = View.GONE
                 val statusCode = response.code()
                 if (statusCode == 204) {
@@ -146,7 +195,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<ColorMode>, t: Throwable) {
+            override fun onFailure(call: Call<POSTColorMode>, t: Throwable) {
                 removeRequestBar()
                 Log.e(tag, "setColors exception", t)
                 showSnackbar("😥 Error")
