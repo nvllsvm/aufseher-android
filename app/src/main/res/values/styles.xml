@@ -9,4 +9,23 @@
         <item name="android:windowBackground">@color/colorPrimary</item>
     </style>
 
+    <style name="SeekBar" parent="AppTheme">
+        <item name="colorAccent">@color/grey</item>
+    </style>
+
+    <style name="RedSeekBar" parent="SeekBar">
+        <item name="colorAccent">@color/red</item>
+    </style>
+
+    <style name="BlueSeekBar" parent="SeekBar">
+        <item name="colorAccent">@color/blue</item>
+    </style>
+
+    <style name="GreenSeekBar" parent="SeekBar">
+        <item name="colorAccent">@color/green</item>
+    </style>
+
+    <style name="WhiteSeekBar" parent="SeekBar">
+        <item name="colorAccent">@color/white</item>
+    </style>
 </resources>

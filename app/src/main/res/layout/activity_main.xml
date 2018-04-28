@@ -162,6 +162,7 @@
                         android:id="@+id/seekbar_red"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:theme="@style/RedSeekBar"
                         android:max="255" />
                 </LinearLayout>
 
@@ -184,6 +185,7 @@
                         android:id="@+id/seekbar_green"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:theme="@style/GreenSeekBar"
                         android:max="255" />
                 </LinearLayout>
 
@@ -206,6 +208,7 @@
                         android:id="@+id/seekbar_blue"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:theme="@style/BlueSeekBar"
                         android:max="255" />
                 </LinearLayout>
 
@@ -228,6 +231,7 @@
                         android:id="@+id/seekbar_white"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:theme="@style/WhiteSeekBar"
                         android:max="255" />
                 </LinearLayout>
 
@@ -250,6 +254,7 @@
                         android:id="@+id/seekbar_brightness"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:theme="@style/SeekBar"
                         android:max="255" />
                 </LinearLayout>
 
@@ -272,6 +277,7 @@
                         android:id="@+id/seekbar_interval"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:theme="@style/SeekBar"
                         android:max="255" />
                 </LinearLayout>
             </LinearLayout>
