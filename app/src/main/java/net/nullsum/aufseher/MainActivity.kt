@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.*
+import net.nullsum.aufseher.api.LightsAPI
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
