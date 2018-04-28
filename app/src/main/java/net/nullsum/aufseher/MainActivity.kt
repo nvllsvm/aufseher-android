@@ -3,6 +3,7 @@ package net.nullsum.aufseher
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.AppCompatRadioButton
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -121,7 +122,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onRadioButtonClicked(view: View) {
-        val radioText = (view as RadioButton).text
+        val radioText = (view as AppCompatRadioButton).text
         setMode((radioText as String).toLowerCase())
     }
 
