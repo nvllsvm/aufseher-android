@@ -121,9 +121,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onRadioButtonClicked(view: View) {
-        val radioID = (findViewById<View>(R.id.radiogroup) as RadioGroup).checkedRadioButtonId
-        val radioText = (findViewById<View>(radioID) as RadioButton).text
-
+        val radioText = (view as RadioButton).text
         setMode((radioText as String).toLowerCase())
     }
 
