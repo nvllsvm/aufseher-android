@@ -74,6 +74,7 @@ class MainActivity : AppCompatActivity() {
                             }
                         }
                     }
+                    findViewById<View>(R.id.main_layout).visibility = View.VISIBLE
                 }
                 if (statusCode == 200) {
                     Log.d(tag, "getColors success")
