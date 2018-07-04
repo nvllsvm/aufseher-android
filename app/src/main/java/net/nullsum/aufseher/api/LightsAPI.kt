@@ -17,10 +17,10 @@ class LightsAPI(baseUrl: String) {
 
     interface LightsService {
 
-        @PUT("/apartment/lights")
+        @PUT("/aufseher/lights")
         fun setColorMode(@Body colorMode: POSTColorMode): Call<POSTColorMode>
 
-        @GET("/apartment/lights")
+        @GET("/aufseher/lights")
         fun getColorMode(): Call<GETColorMode>
     }
 }
