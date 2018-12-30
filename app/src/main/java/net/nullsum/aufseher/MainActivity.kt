@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val api = LightsAPI("https://sol.nullsum.net")
+        val api = LightsAPI("https://aufseher.nullsum.net")
         service = api.retrofit.create(LightsAPI.LightsService::class.java)
 
         (findViewById<View>(R.id.button_request) as Button).setOnClickListener { setColor() }

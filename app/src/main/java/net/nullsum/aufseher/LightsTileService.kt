@@ -13,7 +13,7 @@ class LightsTileService: TileService() {
     private val colorMode = POSTColorMode()
 
     override fun onCreate() {
-        val api = LightsAPI("https://sol.nullsum.net")
+        val api = LightsAPI("https://aufseher.nullsum.net")
         service = api.retrofit.create(LightsAPI.LightsService::class.java)
         super.onCreate()
     }
